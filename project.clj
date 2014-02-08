@@ -9,7 +9,7 @@
 
   :aliases {  "clj-test" ["do" "clean," "with-profile","clj","spec"]
               "clj-test-auto"  ["do" "clean," "with-profile","clj","spec", "-a"]
-              "cljs-test" ["do" "clean," "with-profile","cljs", "cljsbuild", "test"]
+              "cljs-test" ["do" "clean," "cljx," "with-profile","cljs", "cljsbuild", "test"]
               "cljs-test-auto" ["do" "clean," "with-profile","cljs", "cljsbuild", "auto"]
             }
 
@@ -30,10 +30,12 @@
 
                     :cljsbuild ~(let [run-specs ["bin/speclj" "target/tests.js"]]
                                   {:builds
-                                   {:dev {:source-paths ["src/cljs"  "spec/cljs"]
+                                   {:dev {:source-paths ["src/cljs" 
+                                                         "spec/cljs"
+                                                         "target/generated/src/cljs"
+                                                         "target/generated/spec/cljs"] 
                                           :compiler {:output-to "target/tests.js"
                                                      :pretty-print true}
-                                          :notify-command run-specs
                                           }}
                                    :test-commands {"test" run-specs}})
 
