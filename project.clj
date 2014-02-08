@@ -6,6 +6,12 @@
 
   :plugins [[speclj "2.9.4"]]
 
+  :aliases { "clj-test" ["with-profile","clj","spec"]
+            "clj_test_auto"  ["with-profile","clj","spec", "-a"]
+            "cljs-test" ["with-profile","cljs", "cljsbuild", "test"]
+            "cljs_test_auto" ["with-profile","cljs", "cljsbuild", "auto"]
+            }
+
 
   :profiles {
              :dev {
@@ -23,7 +29,7 @@
                     :plugins [[lein-cljsbuild "1.0.2"]
                               [speclj "2.9.4"]]
 
-                    :src-paths ["src/cljs"]
+                    :source-paths ["src/cljs"]
 
                     :cljsbuild ~(let [run-specs ["bin/speclj" "target/tests.js"]]
                                   {:builds
