@@ -24,11 +24,13 @@
                    }
 
              :clj {
+                    :dependencies [[org.clojure/math.numeric-tower "0.0.4"]]
                     :source-paths ["src/clj", "target/generated/src/clj"]
                     :test-paths ["spec/clj", "target/generated/spec/clj"]
                    }
 
-             :cljs {:dependencies [[org.clojure/clojurescript "0.0-2014"] ;necessary or current version of speclj
+             :cljs {
+                    :dependencies [[org.clojure/clojurescript "0.0-2014"] ;necessary or current version of speclj
                                    [org.clojure/tools.reader "0.7.10"] ;necessary or current version of speclj
                                    [lein-cljsbuild "1.0.2"]]
                     :plugins [[lein-cljsbuild "1.0.2"]]
