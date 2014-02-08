@@ -1,7 +1,10 @@
 (ns myproject.shared-file-spec
-  (#+clj :require #+cljs :require-macros [speclj.core :refer [describe it should=]])
+  (#+clj :require #+cljs :require-macros
+         [speclj.core :refer [describe it should=]]
+         [myproject.macros :as macros])
   (:require [speclj.core]
-            [myproject.shared-file :as shared-file]))
+            [myproject.shared-file :as shared-file]
+            ))
 
 (describe "sample cljx file"
 
@@ -10,4 +13,7 @@
 
   (it "finds the absolute value of -100"
       (should= 1 (shared-file/absolute-difference -101 100)))
+
+  (it "catches out-of-bounds error"
+      (should= true (macros/slurpable-file? "badfilename")))
 )

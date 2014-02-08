@@ -35,6 +35,8 @@
                                    [lein-cljsbuild "1.0.2"]]
                     :plugins [[lein-cljsbuild "1.0.2"]]
 
+                    :source-paths ["src/clj"]
+
                     :cljsbuild ~(let [run-specs ["bin/speclj" "target/tests.js"]]
                                   {:builds
                                    {:dev {:source-paths ["src/cljs" 
