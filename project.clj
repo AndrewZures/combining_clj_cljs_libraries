@@ -7,10 +7,15 @@
 
   :plugins [[speclj "2.9.4"]]
 
-  :aliases {  "clj-test" ["do" "clean," "with-profile","clj","spec"]
-              "clj-test-auto"  ["do" "clean," "with-profile","clj","spec", "-a"]
-              "cljs-test" ["do" "clean," "cljx," "with-profile","cljs", "cljsbuild", "test"]
-              "cljs-test-auto" ["do" "clean," "with-profile","cljs", "cljsbuild", "auto"]
+  :aliases {  "clj-test" ["with-profile","clj","spec"]
+              "clj-clean-test" ["do" "clean," "clj-test"]
+              "clj-test-auto"  ["do" "clean," "with-profile" "clj" "spec" "-a"]
+
+              "cljs-test" ["do" "cljx," "with-profile" "cljs" "cljsbuild" "test"]
+              "cljs-clean-test" ["do" "clean," "cljs-test"]
+              "cljs-test-auto" ["do" "clean," "with-profile" "cljs" "cljsbuild" "auto"]
+
+              "all-tests" ["do" "clean," "clj-test," "cljs-test"]
             }
 
 
