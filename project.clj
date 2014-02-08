@@ -6,10 +6,10 @@
 
   :plugins [[speclj "2.9.4"]]
 
-  :aliases { "clj-test" ["with-profile","clj","spec"]
-            "clj_test_auto"  ["with-profile","clj","spec", "-a"]
-            "cljs-test" ["with-profile","cljs", "cljsbuild", "test"]
-            "cljs_test_auto" ["with-profile","cljs", "cljsbuild", "auto"]
+  :aliases {  "clj-test" ["with-profile","clj","spec"]
+              "clj-test-auto"  ["with-profile","clj","spec", "-a"]
+              "cljs-test" ["with-profile","cljs", "cljsbuild", "test"]
+              "cljs-test-auto" ["with-profile","cljs", "cljsbuild", "auto"]
             }
 
 
@@ -22,14 +22,10 @@
                     :test-paths ["spec/clj"]
                    }
 
-             :cljs {:dependencies [[org.clojure/clojurescript "0.0-2014"]
-                                   [org.clojure/tools.reader "0.7.10"]
-                                   [lein-cljsbuild "1.0.2"]
-                                   [speclj "2.9.4"]]
-                    :plugins [[lein-cljsbuild "1.0.2"]
-                              [speclj "2.9.4"]]
-
-                    :source-paths ["src/cljs"]
+             :cljs {:dependencies [[org.clojure/clojurescript "0.0-2014"] ;necessary or current version of speclj
+                                   [org.clojure/tools.reader "0.7.10"] ;necessary or current version of speclj
+                                   [lein-cljsbuild "1.0.2"]]
+                    :plugins [[lein-cljsbuild "1.0.2"]]
 
                     :cljsbuild ~(let [run-specs ["bin/speclj" "target/tests.js"]]
                                   {:builds
