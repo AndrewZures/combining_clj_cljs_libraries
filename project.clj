@@ -2,14 +2,15 @@
   :description "Combining Clojure and ClojureScript Libraries"
 
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [speclj "2.9.4"]]
+                 [speclj "2.9.4"]
+                 [com.keminglabs/cljx "0.3.1"]]
 
   :plugins [[speclj "2.9.4"]]
 
-  :aliases {  "clj-test" ["with-profile","clj","spec"]
-              "clj-test-auto"  ["with-profile","clj","spec", "-a"]
-              "cljs-test" ["with-profile","cljs", "cljsbuild", "test"]
-              "cljs-test-auto" ["with-profile","cljs", "cljsbuild", "auto"]
+  :aliases {  "clj-test" ["do" "clean," "with-profile","clj","spec"]
+              "clj-test-auto"  ["do" "clean," "with-profile","clj","spec", "-a"]
+              "cljs-test" ["do" "clean," "with-profile","cljs", "cljsbuild", "test"]
+              "cljs-test-auto" ["do" "clean," "with-profile","cljs", "cljsbuild", "auto"]
             }
 
 
@@ -18,8 +19,8 @@
                    }
 
              :clj {
-                    :source-paths ["src/clj"]
-                    :test-paths ["spec/clj"]
+                    :source-paths ["src/clj", "target/generated/src/clj"]
+                    :test-paths ["spec/clj", "target/generated/spec/clj"]
                    }
 
              :cljs {:dependencies [[org.clojure/clojurescript "0.0-2014"] ;necessary or current version of speclj
@@ -38,4 +39,18 @@
 
                     }
              }
+
+  :hooks [cljx.hooks]
+  :cljx {:builds [{:source-paths ["src/cljx"]
+                   :output-path "target/generated/src/clj"
+                   :rules :clj}
+                  {:source-paths ["src/cljx"]
+                   :output-path "target/generated/src/cljs"
+                   :rules :cljs}
+                  {:source-paths ["spec/cljx"]
+                   :output-path "target/generated/spec/clj"
+                   :rules :clj}
+                  {:source-paths ["spec/cljx"]
+                   :output-path "target/generated/spec/cljs"
+                   :rules :cljs}]}
   )
