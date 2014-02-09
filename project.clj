@@ -14,7 +14,9 @@
               "cljs-clean-test" ["do" "clean," "cljs-test"]
 
               "all-tests" ["do" "clean," "clj-test," "cljs-test"]
-              "combined-profile-tests" ["do" "clean," "with-profile" "combined" "spec," "with-profile" "combined" "cljsbuild" "test"]
+              "combined-tests" ["do" "clean," "with-profile" "combined" "spec," "with-profile" "combined" "cljsbuild" "test"]
+
+              "install" ["do" "clean," "with-profile" "combined" "install"]
             }
 
 
@@ -26,6 +28,7 @@
                                    [lein-cljsbuild "1.0.2"]]
 
                     :source-paths ["src/clj", "target/generated/src/clj"]
+                    :resource-paths ["src/cljs", "target/generated/src/cljs"]
                     :test-paths ["spec/clj", "target/generated/spec/clj"]
 
                     :cljsbuild ~(let [run-specs ["bin/speclj" "target/tests.js"]]
