@@ -9,18 +9,35 @@
 
   :aliases {  "clj-test" ["with-profile","clj","spec"]
               "clj-clean-test" ["do" "clean," "clj-test"]
-              "clj-test-auto"  ["do" "clean," "with-profile" "clj" "spec" "-a"]
 
               "cljs-test" ["do" "cljx," "with-profile" "cljs" "cljsbuild" "test"]
               "cljs-clean-test" ["do" "clean," "cljs-test"]
-              "cljs-test-auto" ["do" "clean," "with-profile" "cljs" "cljsbuild" "auto"]
 
               "all-tests" ["do" "clean," "clj-test," "cljs-test"]
+              "combined-profile-tests" ["do" "clean," "with-profile" "combined" "spec," "with-profile" "combined" "cljsbuild" "test"]
             }
 
 
   :profiles {
-             :dev {
+             :combined {
+                    :dependencies [[org.clojure/math.numeric-tower "0.0.4"]
+                                   [org.clojure/clojurescript "0.0-2014"] ;necessary or current version of speclj
+                                   [org.clojure/tools.reader "0.7.10"] ;necessary or current version of speclj
+                                   [lein-cljsbuild "1.0.2"]]
+
+                    :source-paths ["src/clj", "target/generated/src/clj"]
+                    :test-paths ["spec/clj", "target/generated/spec/clj"]
+
+                    :cljsbuild ~(let [run-specs ["bin/speclj" "target/tests.js"]]
+                                  {:builds
+                                   {:dev {:source-paths ["src/cljs" 
+                                                         "spec/cljs"
+                                                         "target/generated/src/cljs"
+                                                         "target/generated/spec/cljs"] 
+                                          :compiler {:output-to "target/tests.js"
+                                                     :pretty-print true}
+                                          }}
+                                   :test-commands {"test" run-specs}})
                    }
 
              :clj {
@@ -30,9 +47,9 @@
                    }
 
              :cljs {
-                    :dependencies [[org.clojure/clojurescript "0.0-2014"] ;necessary or current version of speclj
+                    :dependencies [ [org.clojure/clojurescript "0.0-2014"] ;necessary or current version of speclj
                                    [org.clojure/tools.reader "0.7.10"] ;necessary or current version of speclj
-                                   [lein-cljsbuild "1.0.2"]]
+                                   [lein-cljsbuild "1.0.2"] ]
                     :plugins [[lein-cljsbuild "1.0.2"]]
 
                     :source-paths ["src/clj"]
