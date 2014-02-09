@@ -1,5 +1,5 @@
 (ns myproject.platform
-  (:require [clojure.math.numeric-tower :refer [abs]]))
+  (:require [clojure.math.numeric-tower :as math]))
 
-(defn absolute-val [num]
-  (abs num))
+(defn abs [num]
+  (math/abs num))
