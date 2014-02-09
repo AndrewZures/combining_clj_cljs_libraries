@@ -8,6 +8,6 @@
   (it "uses cljx files to generate tested code in clj an cljx"
       (should= 12 (shared-file/multiply 3 4)))
 
-  (it "finds the absolute value of -100"
+  (it "finds the absolute value of two numbers"
       (should= 1 (shared-file/abs-diff -101 100)))
 )
