@@ -1,4 +1,6 @@
-(ns myproject.macros)
+(ns myproject.macros
+  ;(:require [myproject.platform]) ;uncommenting will break cljs tests
+  )
 
 (defn cljs? []
     (boolean (find-ns 'cljs.analyzer)))
