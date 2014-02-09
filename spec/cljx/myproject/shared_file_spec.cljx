@@ -9,5 +9,5 @@
       (should= 12 (shared-file/multiply 3 4)))
 
   (it "finds the absolute value of -100"
-      (should= 1 (shared-file/absolute-difference -101 100)))
+      (should= 1 (shared-file/abs-diff -101 100)))
 )
