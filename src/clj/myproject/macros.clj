@@ -5,12 +5,6 @@
 (defn cljs? []
     (boolean (find-ns 'cljs.analyzer)))
 
-(defmacro when-not-bound [name & body]
-  (if (cljs?)
-    `(when-not ~name)
-    `(when-not (bound? (find-var '~name)))))
-
-
 ; 1. ClojureScript error handling
 ;Clojure won't know what to do with js/Object
 ;try it - uncomment function below:
@@ -47,6 +41,6 @@
         '(catch Exception e# true)))
   )
 
-(defmacro absolute-value [x]
-  `(myproject.platform/absolute-val ~x))
+(defmacro abs [x]
+  `(myproject.platform/abs ~x))
 

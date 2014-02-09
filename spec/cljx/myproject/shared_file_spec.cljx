@@ -12,11 +12,11 @@
       (should= 12 (shared-file/multiply 3 4)))
 
   (it "finds the absolute value of -100"
-      (should= 1 (shared-file/absolute-difference -101 100)))
+      (should= 1 (shared-file/abs-diff -101 100)))
 
   (it "catches out-of-bounds error"
       (should= true (macros/slurpable-file? "badfilename")))
 
   (it "finds absolute value using macro"
-      (should= 2 (macros/absolute-value -2)))
+      (should= 2 (macros/abs -2)))
 )

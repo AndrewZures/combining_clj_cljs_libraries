@@ -7,6 +7,5 @@
 (defn multiply [x y]
   (* x y))
 
-(defn absolute-difference [x y]
-  (- (platform/absolute-val x) (platform/absolute-val y)))
-
+(defn abs-diff [x y]
+  (platform/abs (- (platform/abs x) (platform/abs y))))
