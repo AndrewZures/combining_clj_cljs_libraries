@@ -7,9 +7,7 @@
   :plugins [[speclj "2.9.4"]]
 
   :aliases {  "clj-test" ["with-profile","clj","spec"]
-              "clj-test-auto"  ["with-profile","clj","spec", "-a"]
               "cljs-test" ["with-profile","cljs", "cljsbuild", "test"]
-              "cljs-test-auto" ["with-profile","cljs", "cljsbuild", "auto"]
             }
 
 
