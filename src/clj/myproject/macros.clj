@@ -45,3 +45,6 @@
         '(catch Exception e# true)))
   )
 
+(defmacro absolute-value [x]
+  `(myproject.platform/absolute-val ~x))
+

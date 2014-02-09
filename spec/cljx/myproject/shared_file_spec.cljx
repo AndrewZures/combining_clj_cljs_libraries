@@ -16,4 +16,7 @@
 
   (it "catches out-of-bounds error"
       (should= true (macros/slurpable-file? "badfilename")))
+
+  (it "finds absolute value using macro"
+      (should= 2 (macros/absolute-value -2)))
 )
