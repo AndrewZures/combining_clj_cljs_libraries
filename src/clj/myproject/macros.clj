@@ -3,18 +3,13 @@
 (defn cljs? []
     (boolean (find-ns 'cljs.analyzer)))
 
-(defmacro when-not-bound [name & body]
-  (if (cljs?)
-    `(when-not ~name)
-    `(when-not (bound? (find-var '~name)))))
-
-
 ; 1. ClojureScript error handling
 ;Clojure won't know what to do with js/Object
 ;try it - uncomment function below:
 ;   if you run "lein cljs-clean-test" - it will pass
 ;   if you run "lein clj-clean-test" - it will fail
 ;
+
 ;(defmacro slurpable-file? [file-name]
 ;  `(try
 ;     (slurp ~file-name)

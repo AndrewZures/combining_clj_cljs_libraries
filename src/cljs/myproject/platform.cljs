@@ -1,4 +1,4 @@
 (ns myproject.platform)
 
-(defn absolute-val[num]
+(defn abs [num]
     (js/Math.abs num))
