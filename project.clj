@@ -30,7 +30,6 @@
                                    {:dev {:source-paths ["src/cljs"  "spec/cljs"]
                                           :compiler {:output-to "target/tests.js"
                                                      :pretty-print true}
-                                          :notify-command run-specs
                                           }}
                                    :test-commands {"test" run-specs}})
 
